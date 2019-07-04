@@ -124,10 +124,14 @@ Partial Class frmAgencia
         '
         'DataAgencia
         '
-        Me.DataAgencia.AllowUserToOrderColumns = True
-        Me.DataAgencia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataAgencia.AllowUserToAddRows = False
+        Me.DataAgencia.AllowUserToDeleteRows = False
         Me.DataAgencia.Location = New System.Drawing.Point(6, 47)
+        Me.DataAgencia.MultiSelect = False
         Me.DataAgencia.Name = "DataAgencia"
+        Me.DataAgencia.ReadOnly = True
+        Me.DataAgencia.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
+        Me.DataAgencia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataAgencia.Size = New System.Drawing.Size(764, 172)
         Me.DataAgencia.TabIndex = 3
         '
