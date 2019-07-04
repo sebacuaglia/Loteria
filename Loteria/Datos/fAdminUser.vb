@@ -1,16 +1,15 @@
 ﻿Imports System.Data.SqlClient
 
-Public Class fTipoSorteo
-
+Public Class fAdminUser
     Inherits clsConexion 'la clase o interfaz actual heredan los atributos, variables, propiedades, procedimientos y eventos de otra clase o conjunto de interfaces
     Dim cmd As SqlCommand
 
-    Public Function mostrar_TipoSorteo() As DataTable
+    Public Function mostrar_Usuarios() As DataTable
         'funcion que caragara en memoria la tabla TipoSorteo
 
         Try
             funcConectarDB()
-            cmd = New SqlCommand("procMostrar_TipoSorteo")
+            cmd = New SqlCommand("procMostrar_Usuario")
             cmd.CommandType = CommandType.StoredProcedure
 
             cmd.Connection = CNN

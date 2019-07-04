@@ -71,3 +71,4 @@ C:\Users\sebac\source\repos\Loteria\Loteria\obj\Debug\Loteria.vbproj.CopyComplet
 C:\Users\sebac\source\repos\Loteria\Loteria\bin\Debug\Microsoft.AnalysisServices.AppLocal.Core.dll
 C:\Users\sebac\source\repos\Loteria\Loteria\bin\Debug\Microsoft.AnalysisServices.AppLocal.dll
 C:\Users\sebac\source\repos\Loteria\Loteria\bin\Debug\Microsoft.AnalysisServices.AppLocal.Tabular.dll
+C:\Users\sebac\source\repos\Loteria\Loteria\obj\Debug\Loteria.frmAdminUser.resources
