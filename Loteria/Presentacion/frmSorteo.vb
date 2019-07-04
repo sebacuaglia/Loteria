@@ -37,24 +37,6 @@
                             MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-    Private Sub Buscar_TipoDato()
-        Try
-            Dim FuncionMostrar As New fSorteo
-            dt = FuncionMostrar.Buscar_NombreTipoSorteos
-
-            If dt.Rows.Count <> 0 Then
-                cboTipoSorteo.DataSource = dt
-                cboTipoSorteo.DisplayMember = "Nombre"
-                cboTipoSorteo.ValueMember = "ID"
-            Else
-                cboTipoSorteo.DataSource = Nothing
-            End If
-        Catch ex As Exception
-            MessageBox.Show("Atencion: se ha generado un error tratando de mostrar los sorteos." &
-                            Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
 
     Private Sub Mostrar_Datos()
         Try
@@ -80,8 +62,6 @@
 
             If cboBuscar.SelectedItem = "Nombre" Then
                 dv.RowFilter = cboBuscar.Text & " Like '%" & txtBuscar.Text & "%'"
-            ElseIf cboBuscar.SelectedItem = "Fecha" Then
-                dv.RowFilter = cboBuscar.Text & Convert.ToDateTime(" Like '%" & txtBuscar.Text & "%'")
             Else
                 dv.RowFilter = cboBuscar.Text & " = " & txtBuscar.Text
             End If
@@ -110,6 +90,7 @@
         dtpHora.Format = DateTimePickerFormat.Custom
         dtpFecha.Enabled = False
         dtpHora.Enabled = False
+        btnActualizar.Enabled = False
 
         If dt.Rows.Count = 0 Then
             btnModificar.Enabled = False
@@ -154,6 +135,7 @@
             cboTipoSorteo.Enabled = True
             dtpFecha.Enabled = True
             dtpHora.Enabled = True
+            btnActualizar.Enabled = True
 
             btnAgregar.Text = "Confirmar"
             btnModificar.Text = "Cancelar"
@@ -263,6 +245,7 @@
             btnAgregar.Text = "Agregar"
             btnModificar.Text = "Modificar"
 
+            btnActualizar.Enabled = False
             btnCerrar.Enabled = True
             dataSorteo.Enabled = True
             Mostrar_Datos()
@@ -274,6 +257,7 @@
             cboTipoSorteo.Enabled = True
             dtpFecha.Enabled = True
             dtpHora.Enabled = True
+            btnActualizar.Enabled = True
             dtpFecha.Format = DateTimePickerFormat.Long
             dtpHora.CustomFormat = "HH:mm"
             dtpHora.Format = DateTimePickerFormat.Custom
@@ -340,7 +324,9 @@
         frmTipoSorteo.MdiParent = frmPrincipal
         frmTipoSorteo.StartPosition = FormStartPosition.CenterScreen
         frmTipoSorteo.Show()
-        Mostrar_TipoSorteo()
     End Sub
 
+    Private Sub btnActualizar_Click(sender As Object, e As EventArgs) Handles btnActualizar.Click
+        Mostrar_TipoSorteo()
+    End Sub
 End Class

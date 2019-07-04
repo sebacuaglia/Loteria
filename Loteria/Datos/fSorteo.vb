@@ -138,8 +138,4 @@ Public Class fSorteo
         End Try
     End Function
 
-    Public Function Buscar_NombreTipoSorteos()
-
-    End Function
-
 End Class

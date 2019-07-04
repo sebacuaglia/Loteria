@@ -48,6 +48,7 @@ Partial Class frmSorteo
         Me.ErrProvSorteo = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.btnActualizar = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -58,6 +59,7 @@ Partial Class frmSorteo
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.btnActualizar)
         Me.GroupBox1.Controls.Add(Me.btnAgregarTipoSorteo)
         Me.GroupBox1.Controls.Add(Me.dtpHora)
         Me.GroupBox1.Controls.Add(Me.cboTipoSorteo)
@@ -68,15 +70,15 @@ Partial Class frmSorteo
         Me.GroupBox1.Controls.Add(Me.lvlID)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 78)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(447, 111)
+        Me.GroupBox1.Size = New System.Drawing.Size(467, 111)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
         'btnAgregarTipoSorteo
         '
-        Me.btnAgregarTipoSorteo.Location = New System.Drawing.Point(273, 69)
+        Me.btnAgregarTipoSorteo.Location = New System.Drawing.Point(322, 71)
         Me.btnAgregarTipoSorteo.Name = "btnAgregarTipoSorteo"
-        Me.btnAgregarTipoSorteo.Size = New System.Drawing.Size(147, 23)
+        Me.btnAgregarTipoSorteo.Size = New System.Drawing.Size(130, 23)
         Me.btnAgregarTipoSorteo.TabIndex = 13
         Me.btnAgregarTipoSorteo.Text = "Agregar Tipo de Sorteo"
         Me.btnAgregarTipoSorteo.UseVisualStyleBackColor = True
@@ -85,7 +87,7 @@ Partial Class frmSorteo
         '
         Me.dtpHora.CustomFormat = "HH:mm"
         Me.dtpHora.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpHora.Location = New System.Drawing.Point(352, 45)
+        Me.dtpHora.Location = New System.Drawing.Point(322, 45)
         Me.dtpHora.Name = "dtpHora"
         Me.dtpHora.ShowUpDown = True
         Me.dtpHora.Size = New System.Drawing.Size(68, 20)
@@ -95,14 +97,14 @@ Partial Class frmSorteo
         'cboTipoSorteo
         '
         Me.cboTipoSorteo.FormattingEnabled = True
-        Me.cboTipoSorteo.Location = New System.Drawing.Point(146, 71)
+        Me.cboTipoSorteo.Location = New System.Drawing.Point(116, 73)
         Me.cboTipoSorteo.Name = "cboTipoSorteo"
         Me.cboTipoSorteo.Size = New System.Drawing.Size(121, 21)
         Me.cboTipoSorteo.TabIndex = 5
         '
         'dtpFecha
         '
-        Me.dtpFecha.Location = New System.Drawing.Point(146, 45)
+        Me.dtpFecha.Location = New System.Drawing.Point(116, 45)
         Me.dtpFecha.Name = "dtpFecha"
         Me.dtpFecha.Size = New System.Drawing.Size(200, 20)
         Me.dtpFecha.TabIndex = 2
@@ -110,7 +112,7 @@ Partial Class frmSorteo
         '
         'txtID
         '
-        Me.txtID.Location = New System.Drawing.Point(146, 19)
+        Me.txtID.Location = New System.Drawing.Point(116, 19)
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(100, 20)
         Me.txtID.TabIndex = 4
@@ -118,7 +120,7 @@ Partial Class frmSorteo
         'lvlTiSorteo
         '
         Me.lvlTiSorteo.AutoSize = True
-        Me.lvlTiSorteo.Location = New System.Drawing.Point(63, 74)
+        Me.lvlTiSorteo.Location = New System.Drawing.Point(33, 76)
         Me.lvlTiSorteo.Name = "lvlTiSorteo"
         Me.lvlTiSorteo.Size = New System.Drawing.Size(77, 13)
         Me.lvlTiSorteo.TabIndex = 3
@@ -127,7 +129,7 @@ Partial Class frmSorteo
         'lvlFechaSorteo
         '
         Me.lvlFechaSorteo.AutoSize = True
-        Me.lvlFechaSorteo.Location = New System.Drawing.Point(54, 51)
+        Me.lvlFechaSorteo.Location = New System.Drawing.Point(24, 48)
         Me.lvlFechaSorteo.Name = "lvlFechaSorteo"
         Me.lvlFechaSorteo.Size = New System.Drawing.Size(86, 13)
         Me.lvlFechaSorteo.TabIndex = 2
@@ -136,7 +138,7 @@ Partial Class frmSorteo
         'lvlID
         '
         Me.lvlID.AutoSize = True
-        Me.lvlID.Location = New System.Drawing.Point(122, 22)
+        Me.lvlID.Location = New System.Drawing.Point(92, 22)
         Me.lvlID.Name = "lvlID"
         Me.lvlID.Size = New System.Drawing.Size(18, 13)
         Me.lvlID.TabIndex = 0
@@ -224,7 +226,7 @@ Partial Class frmSorteo
         'cboBuscar
         '
         Me.cboBuscar.FormattingEnabled = True
-        Me.cboBuscar.Items.AddRange(New Object() {"ID", "Fecha", "Nombre"})
+        Me.cboBuscar.Items.AddRange(New Object() {"ID", "Nombre"})
         Me.cboBuscar.Location = New System.Drawing.Point(40, 19)
         Me.cboBuscar.Name = "cboBuscar"
         Me.cboBuscar.Size = New System.Drawing.Size(100, 21)
@@ -287,6 +289,15 @@ Partial Class frmSorteo
     "odificar, Eliminar y Consultar los sorteos  Sistema"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'btnActualizar
+        '
+        Me.btnActualizar.Location = New System.Drawing.Point(243, 71)
+        Me.btnActualizar.Name = "btnActualizar"
+        Me.btnActualizar.Size = New System.Drawing.Size(75, 23)
+        Me.btnActualizar.TabIndex = 14
+        Me.btnActualizar.Text = "Actualizar"
+        Me.btnActualizar.UseVisualStyleBackColor = True
+        '
         'frmSorteo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -341,4 +352,5 @@ Partial Class frmSorteo
     Friend WithEvents ErrProvSorteo As ErrorProvider
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents Label4 As Label
+    Friend WithEvents btnActualizar As Button
 End Class
