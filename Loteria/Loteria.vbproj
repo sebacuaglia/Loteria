@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Datos\clsConexion.vb" />
+    <Compile Include="Datos\fAdminUser.vb" />
     <Compile Include="Datos\fAgencia.vb" />
     <Compile Include="Datos\fSorteo.vb" />
     <Compile Include="Datos\fTipoSorteo.vb" />
@@ -119,6 +120,7 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Logica\LogAdminUser.vb" />
     <Compile Include="Logica\logAgencia.vb" />
     <Compile Include="Logica\logSorteo.vb" />
     <Compile Include="Logica\logTipoSorteo.vb" />
@@ -204,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmAcercaDe.resx">
       <DependentUpon>frmAcercaDe.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmAdminUser.resx">
+      <DependentUpon>frmAdminUser.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmAgencia.resx">
       <DependentUpon>frmAgencia.vb</DependentUpon>

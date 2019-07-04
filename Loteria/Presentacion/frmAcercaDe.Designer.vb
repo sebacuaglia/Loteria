@@ -112,6 +112,8 @@ Partial Class frmAcercaDe
         Me.Controls.Add(Me.GroupBoxAlumnos)
         Me.Controls.Add(Me.GroupBoxProfesor)
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(306, 277)
+        Me.MinimumSize = New System.Drawing.Size(306, 277)
         Me.Name = "frmAcercaDe"
         Me.Text = "Acerca de..."
         Me.GroupBoxProfesor.ResumeLayout(False)
