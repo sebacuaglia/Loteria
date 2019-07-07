@@ -203,7 +203,7 @@
         End If
     End Sub
 
-    Private Sub dataTipoSorteo_cellClick(sender As Object, e As DataGridViewCellEventArgs)
+    Private Sub dataTipoSorteo_cellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dataTipoSorteo.CellClick
         txtID.Text = dataTipoSorteo.SelectedCells.Item(0).Value
         txtNombre.Text = dataTipoSorteo.SelectedCells.Item(1).Value
         txtDescripcion.Text = dataTipoSorteo.SelectedCells.Item(2).Value

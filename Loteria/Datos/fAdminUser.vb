@@ -1,16 +1,15 @@
 ﻿Imports System.Data.SqlClient
 
-Public Class fTipoSorteo
-
+Public Class fAdminUser
     Inherits clsConexion 'la clase o interfaz actual heredan los atributos, variables, propiedades, procedimientos y eventos de otra clase o conjunto de interfaces
     Dim cmd As SqlCommand
 
-    Public Function mostrar_TipoSorteo() As DataTable
+    Public Function mostrar_Usuarios() As DataTable
         'funcion que caragara en memoria la tabla TipoSorteo
 
         Try
             funcConectarDB()
-            cmd = New SqlCommand("procMostrar_TipoSorteo")
+            cmd = New SqlCommand("procMostrar_Usuario")
             cmd.CommandType = CommandType.StoredProcedure
 
             cmd.Connection = CNN
@@ -38,17 +37,19 @@ Public Class fTipoSorteo
         End Try
     End Function
 
-    Public Function insertar_tipoSorteo(ByVal dts As logTipoSorteo) As Boolean
+    Public Function insertar_Usuario(ByVal dts As LogAdminUser) As Boolean
         'la funcion retornara verdadero si se inserta ok en el registro sino devolvera falso'
 
         Try
             funcConectarDB()
-            cmd = New SqlCommand("Insertar_TipoSorteo")
+            cmd = New SqlCommand("Insertar_Usuario")
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = CNN
 
-            cmd.Parameters.AddWithValue("@Nombre", dts.pNombre)
-            cmd.Parameters.AddWithValue("@Descripcion", dts.pDescripcion)
+            cmd.Parameters.AddWithValue("@NombreUsu", dts.pNombreUsu)
+            cmd.Parameters.AddWithValue("@Login", dts.pLogin)
+            cmd.Parameters.AddWithValue("@Password", dts.pPassword)
+            cmd.Parameters.AddWithValue("@habilitado", dts.pHabilitado)
 
             If cmd.ExecuteNonQuery Then
                 Return True
@@ -63,12 +64,12 @@ Public Class fTipoSorteo
             funcCerrarConnDB()
         End Try
     End Function
-    Public Function Eliminar_tipoSorteo(ByVal dts As logTipoSorteo) As Boolean
+    Public Function Eliminar_Usuario(ByVal dts As LogAdminUser) As Boolean
         'la funcion retornara verdadero si se elimina el registro sino devolvera falso'
 
         Try
             funcConectarDB()
-            cmd = New SqlCommand("Eliminar_TipoSorteo")
+            cmd = New SqlCommand("Eliminar_Usuario")
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = CNN
 
@@ -88,16 +89,20 @@ Public Class fTipoSorteo
         End Try
     End Function
 
-    Public Function Modificar_TipoSorteo(ByVal dts As logTipoSorteo) As Boolean
+    Public Function Modificar_Usuario(ByVal dts As LogAdminUser) As Boolean
         'La función retornará VERDADERO si se actualiza ok el registro. 'Sino, devolverá FALSO.
         Try
             funcConectarDB()
-            cmd = New SqlCommand("EDITAR_TipoSorteo")
+            cmd = New SqlCommand("EDITAR_Usuario")
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = CNN
+
             cmd.Parameters.AddWithValue("@ID", dts.pID)
-            cmd.Parameters.AddWithValue("@Nombre", dts.pNombre)
-            cmd.Parameters.AddWithValue("@Descripcion", dts.pDescripcion)
+            cmd.Parameters.AddWithValue("@NombreUsu", dts.pNombreUsu)
+            cmd.Parameters.AddWithValue("@Login", dts.pLogin)
+            cmd.Parameters.AddWithValue("@Password", dts.pPassword)
+            cmd.Parameters.AddWithValue("@habilitado", dts.pHabilitado)
+
             If cmd.ExecuteNonQuery Then
                 Return True
             Else
