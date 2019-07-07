@@ -150,9 +150,14 @@ Partial Class frmTipoSorteo
         '
         'dataTipoSorteo
         '
-        Me.dataTipoSorteo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dataTipoSorteo.AllowUserToAddRows = False
+        Me.dataTipoSorteo.AllowUserToDeleteRows = False
         Me.dataTipoSorteo.Location = New System.Drawing.Point(12, 43)
+        Me.dataTipoSorteo.MultiSelect = False
         Me.dataTipoSorteo.Name = "dataTipoSorteo"
+        Me.dataTipoSorteo.ReadOnly = True
+        Me.dataTipoSorteo.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
+        Me.dataTipoSorteo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dataTipoSorteo.Size = New System.Drawing.Size(632, 102)
         Me.dataTipoSorteo.TabIndex = 12
         '

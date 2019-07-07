@@ -116,7 +116,7 @@
 
             If ModoPantallaAgencias = ModoPantalla.ModoALTA Then
                 Try
-                    Dim funcion As New fAgencia
+
                     Dim dts As New logAgencia
                     Dim FuncionInsertar As New fAgencia
 
@@ -184,7 +184,7 @@
         End If
     End Sub
 
-    Private Sub dataAgencia_CellClick(sender As Object, e As DataGridViewCellEventArgs) 'Handles DataAgencia.CellClick
+    Private Sub dataAgencia_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataAgencia.CellClick
         txtID.Text = DataAgencia.SelectedCells.Item(0).Value
         txtNombre.Text = DataAgencia.SelectedCells.Item(1).Value
         txtGanancia.Text = DataAgencia.SelectedCells.Item(2).Value
@@ -260,4 +260,5 @@
     Private Sub cboBuscar_TextChanged(sender As Object, e As EventArgs) Handles cboBuscar.TextChanged
         txtBuscar.Text = ""
     End Sub
+
 End Class

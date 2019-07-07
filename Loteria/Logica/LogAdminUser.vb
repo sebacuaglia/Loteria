@@ -1,6 +1,7 @@
 ﻿Public Class LogAdminUser
     Dim ID As Integer
     Dim NombreUsu, Login, Password As String
+    Dim Habilitado As Boolean
 
     Public Property pID
         Get
@@ -35,6 +36,15 @@
         End Get
         Set(value)
             Password = value
+        End Set
+    End Property
+
+    Public Property pHabilitado
+        Get
+            Return Habilitado
+        End Get
+        Set(value)
+            Habilitado = value
         End Set
     End Property
 

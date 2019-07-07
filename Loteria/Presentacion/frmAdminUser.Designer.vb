@@ -22,6 +22,7 @@ Partial Class frmAdminUser
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAdminUser))
         Me.btnCerrar = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
@@ -29,6 +30,9 @@ Partial Class frmAdminUser
         Me.btnAgregar = New System.Windows.Forms.Button()
         Me.btnModificar = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.chbHabilitado = New System.Windows.Forms.CheckBox()
+        Me.lblLogin = New System.Windows.Forms.Label()
+        Me.txtPass = New System.Windows.Forms.TextBox()
         Me.txtLogin = New System.Windows.Forms.TextBox()
         Me.txtNombreUsu = New System.Windows.Forms.TextBox()
         Me.txtID = New System.Windows.Forms.TextBox()
@@ -36,20 +40,19 @@ Partial Class frmAdminUser
         Me.lblNombreUsu = New System.Windows.Forms.Label()
         Me.lblID = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.dataTipoSorteo = New System.Windows.Forms.DataGridView()
+        Me.dataUsuario = New System.Windows.Forms.DataGridView()
         Me.cboBuscar = New System.Windows.Forms.ComboBox()
         Me.btnBuscar = New System.Windows.Forms.Button()
         Me.txtBuscar = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.txtPass = New System.Windows.Forms.TextBox()
-        Me.lblLogin = New System.Windows.Forms.Label()
-        Me.chbHabilitado = New System.Windows.Forms.CheckBox()
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
-        CType(Me.dataTipoSorteo, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dataUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnCerrar
@@ -100,6 +103,22 @@ Partial Class frmAdminUser
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.TabStop = False
         '
+        'chbHabilitado
+        '
+        resources.ApplyResources(Me.chbHabilitado, "chbHabilitado")
+        Me.chbHabilitado.Name = "chbHabilitado"
+        Me.chbHabilitado.UseVisualStyleBackColor = True
+        '
+        'lblLogin
+        '
+        resources.ApplyResources(Me.lblLogin, "lblLogin")
+        Me.lblLogin.Name = "lblLogin"
+        '
+        'txtPass
+        '
+        resources.ApplyResources(Me.txtPass, "txtPass")
+        Me.txtPass.Name = "txtPass"
+        '
         'txtLogin
         '
         resources.ApplyResources(Me.txtLogin, "txtLogin")
@@ -132,7 +151,7 @@ Partial Class frmAdminUser
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.dataTipoSorteo)
+        Me.GroupBox3.Controls.Add(Me.dataUsuario)
         Me.GroupBox3.Controls.Add(Me.cboBuscar)
         Me.GroupBox3.Controls.Add(Me.btnBuscar)
         Me.GroupBox3.Controls.Add(Me.txtBuscar)
@@ -140,14 +159,20 @@ Partial Class frmAdminUser
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.TabStop = False
         '
-        'dataTipoSorteo
+        'dataUsuario
         '
-        Me.dataTipoSorteo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        resources.ApplyResources(Me.dataTipoSorteo, "dataTipoSorteo")
-        Me.dataTipoSorteo.Name = "dataTipoSorteo"
+        Me.dataUsuario.AllowUserToAddRows = False
+        Me.dataUsuario.AllowUserToDeleteRows = False
+        resources.ApplyResources(Me.dataUsuario, "dataUsuario")
+        Me.dataUsuario.MultiSelect = False
+        Me.dataUsuario.Name = "dataUsuario"
+        Me.dataUsuario.ReadOnly = True
+        Me.dataUsuario.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
+        Me.dataUsuario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         '
         'cboBuscar
         '
+        Me.cboBuscar.ForeColor = System.Drawing.Color.Black
         Me.cboBuscar.FormattingEnabled = True
         Me.cboBuscar.Items.AddRange(New Object() {resources.GetString("cboBuscar.Items"), resources.GetString("cboBuscar.Items1"), resources.GetString("cboBuscar.Items2")})
         resources.ApplyResources(Me.cboBuscar, "cboBuscar")
@@ -177,21 +202,9 @@ Partial Class frmAdminUser
         resources.ApplyResources(Me.Label4, "Label4")
         Me.Label4.Name = "Label4"
         '
-        'txtPass
+        'ErrorProvider1
         '
-        resources.ApplyResources(Me.txtPass, "txtPass")
-        Me.txtPass.Name = "txtPass"
-        '
-        'lblLogin
-        '
-        resources.ApplyResources(Me.lblLogin, "lblLogin")
-        Me.lblLogin.Name = "lblLogin"
-        '
-        'chbHabilitado
-        '
-        resources.ApplyResources(Me.chbHabilitado, "chbHabilitado")
-        Me.chbHabilitado.Name = "chbHabilitado"
-        Me.chbHabilitado.UseVisualStyleBackColor = True
+        Me.ErrorProvider1.ContainerControl = Me
         '
         'frmAdminUser
         '
@@ -209,9 +222,10 @@ Partial Class frmAdminUser
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
-        CType(Me.dataTipoSorteo, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dataUsuario, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -229,7 +243,7 @@ Partial Class frmAdminUser
     Friend WithEvents lblNombreUsu As Label
     Friend WithEvents lblID As Label
     Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents dataTipoSorteo As DataGridView
+    Friend WithEvents dataUsuario As DataGridView
     Friend WithEvents cboBuscar As ComboBox
     Friend WithEvents btnBuscar As Button
     Friend WithEvents txtBuscar As TextBox
@@ -238,4 +252,5 @@ Partial Class frmAdminUser
     Friend WithEvents lblLogin As Label
     Friend WithEvents txtPass As TextBox
     Friend WithEvents chbHabilitado As CheckBox
+    Friend WithEvents ErrorProvider1 As ErrorProvider
 End Class
