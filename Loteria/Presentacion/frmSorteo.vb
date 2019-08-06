@@ -1,6 +1,5 @@
 ﻿Public Class frmSorteo
     Private dt As New DataTable
-    'Private ds As New DataTable
     Dim ModoPantallaSorteo As ModoPantalla
 
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
@@ -11,7 +10,6 @@
         Timer.Enabled = True
         Mostrar_Datos()
         inicia_pantalla()
-
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
@@ -32,8 +30,26 @@
                 cboTipoSorteo.DataSource = Nothing
             End If
         Catch ex As Exception
-            MessageBox.Show("Atencion: se ha generado un error tratando de mostrar los sorteos." &
-                            Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
+            MessageBox.Show("ATENCIÓN: se ha generado un error tratando de mostrar los sorteos." &
+                            Environment.NewLine & "Descripción del error: " & Environment.NewLine & ex.Message, "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub Buscar_TipoDato()
+        Try
+            Dim FuncionMostrar As New fSorteo
+
+            If dt.Rows.Count <> 0 Then
+                cboTipoSorteo.DataSource = dt
+                cboTipoSorteo.DisplayMember = "Nombre"
+                cboTipoSorteo.ValueMember = "ID"
+            Else
+                cboTipoSorteo.DataSource = Nothing
+            End If
+        Catch ex As Exception
+            MessageBox.Show("ATENCIÓN: se ha generado un error tratando de mostrar los sorteos." &
+                            Environment.NewLine & "Descripción del error: " & Environment.NewLine & ex.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
@@ -49,35 +65,65 @@
                 dataSorteo.DataSource = Nothing
             End If
         Catch ex As Exception
-            MessageBox.Show("Atencion: se ha generado un error tratando de mostrar los sorteos." &
-                            Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
+            MessageBox.Show("ATENCIÓN: se ha generado un error tratando de mostrar los sorteos." &
+                            Environment.NewLine & "Descripción del error: " & Environment.NewLine & ex.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    Private ReadOnly Property Validar_Sortear 'lo habia hecho con funcion y visual me recomendo readonly property'
+        Get
+            Try
+                Dim dt As New DataTable
+                Dim dts As New logSortear
+                Dim FuncionMostrar As New fSortear
+                dts.pIDSorteo = dataSorteo.SelectedCells.Item(0).Value
+
+                dt = FuncionMostrar.Mostrar_Resultados(dts)
+
+                If dt.Rows.Count <> 0 Then
+                    Return True
+                Else
+                    Return False
+                End If
+            Catch ex As Exception
+                MessageBox.Show("ATENCIÓN: se ha generado un error tratando de validar el sorteo seleccionado." &
+                                       Environment.NewLine & "Descripción del error: " & Environment.NewLine & ex.Message, "Error",
+                                       MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return False
+            End Try
+        End Get
+    End Property
+
     Private Sub Buscar_Datos()
         Try
             Dim ds As New DataSet
             ds.Tables.Add(dt.Copy)
             Dim dv As New DataView(ds.Tables(0))
 
-            If cboBuscar.SelectedItem = "Nombre" Then
-                dv.RowFilter = cboBuscar.Text & " Like '%" & txtBuscar.Text & "%'"
+            If txtBuscar.Text = "" Then
+                Mostrar_Datos()
             Else
-                dv.RowFilter = cboBuscar.Text & " = " & txtBuscar.Text
+                If cboBuscar.SelectedItem = "Nombre" Then
+                    dv.RowFilter = cboBuscar.Text & " Like '%" & txtBuscar.Text & "%'"
+                ElseIf cboBuscar.SelectedItem = "Fecha" Then
+                    dv.RowFilter = "FECHA = " & txtBuscar.Text
+                Else
+                    dv.RowFilter = cboBuscar.Text & " = " & txtBuscar.Text
+                End If
             End If
-
-
             If dv.Count <> 0 Then
                 dataSorteo.DataSource = dv
             Else
                 dataSorteo.DataSource = Nothing
             End If
         Catch ex As Exception
-            MessageBox.Show("Atencion: se ha generado un error tratando de buscar los sorteos." &
-                            Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
+            MessageBox.Show("ATENCIÓN: se ha generado un error tratando de buscar los sorteos." &
+                            Environment.NewLine & "Descripción del error: " & Environment.NewLine & ex.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
     Private Sub inicia_pantalla()
         dtpFecha.Value = DateTime.Now
         dtpHora.Value = DateTime.Now
@@ -90,7 +136,6 @@
         dtpHora.Format = DateTimePickerFormat.Custom
         dtpFecha.Enabled = False
         dtpHora.Enabled = False
-        btnActualizar.Enabled = False
 
         If dt.Rows.Count = 0 Then
             btnModificar.Enabled = False
@@ -135,7 +180,6 @@
             cboTipoSorteo.Enabled = True
             dtpFecha.Enabled = True
             dtpHora.Enabled = True
-            btnActualizar.Enabled = True
 
             btnAgregar.Text = "Confirmar"
             btnModificar.Text = "Cancelar"
@@ -170,7 +214,6 @@
                     Dim dts As New logSorteo
                     Dim FuncionInsertar As New fSorteo
 
-                    'dts.pID = txtID.Text
                     dts.pFechaHora = dtpFecha.Value.ToString("dd-MM-yyyy") + " " + dtpHora.Value.ToString("HH:mm:ss.fff")
                     dts.pIDTipoSorteo = cboTipoSorteo.SelectedValue
                     If FuncionInsertar.Insertar_Sorteo(dts) Then
@@ -190,8 +233,8 @@
                     End If
 
                 Catch ex As Exception
-                    MessageBox.Show("Atencion: se ha generado un error tratando de Registrar los tipos de sorteo." &
-                            Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
+                    MessageBox.Show("ATENCIÓN: se ha generado un error tratando de registrar el sorteo." &
+                            Environment.NewLine & "Descripción del error: " & Environment.NewLine & ex.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
             ElseIf ModoPantallaSorteo = ModoPantalla.ModoMODIFICACION Then
@@ -218,15 +261,15 @@
                     End If
 
                 Catch ex As Exception
-                    MessageBox.Show("Atencion: se ha generado un error tratando de Modificar los tipos de sorteo." &
-                                    Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
+                    MessageBox.Show("ATENCIÓN: se ha generado un error tratando de registrar las modificacciones el sorteo seleccionado." &
+                                    Environment.NewLine & "Descripción del error: " & Environment.NewLine & ex.Message, "Error",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
             End If
         End If
     End Sub
 
-    Private Sub dataTipoSorteo_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dataSorteo.CellClick
+    Private Sub dataSorteo_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dataSorteo.CellClick
         Mostrar_TipoSorteo()
         dtpFecha.Format = DateTimePickerFormat.Long
         dtpHora.CustomFormat = "HH:mm"
@@ -235,7 +278,25 @@
         dtpFecha.Text = Convert.ToString(dataSorteo.SelectedCells.Item(1).Value)
         dtpHora.Text = Convert.ToString(dataSorteo.SelectedCells.Item(1).Value)
         cboTipoSorteo.SelectedIndex = cboTipoSorteo.FindStringExact(dataSorteo.SelectedCells.Item(2).Value)
-        btnSortear.Enabled = True
+
+        If DateTime.Now > dataSorteo.SelectedCells.Item(1).Value Then
+            If Validar_Sortear Then
+                btnSortear.Enabled = True
+                btnSortear.Text = "Mostrar Resultado"
+                btnModificar.Enabled = False
+                btnEliminar.Enabled = False
+            Else
+                btnSortear.Enabled = True
+                btnSortear.Text = "Sortear"
+                btnModificar.Enabled = False
+                btnEliminar.Enabled = False
+            End If
+        Else
+            btnSortear.Enabled = False
+            btnModificar.Enabled = True
+            btnEliminar.Enabled = True
+        End If
+
     End Sub
 
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
@@ -245,7 +306,6 @@
             btnAgregar.Text = "Agregar"
             btnModificar.Text = "Modificar"
 
-            btnActualizar.Enabled = False
             btnCerrar.Enabled = True
             dataSorteo.Enabled = True
             Mostrar_Datos()
@@ -257,7 +317,6 @@
             cboTipoSorteo.Enabled = True
             dtpFecha.Enabled = True
             dtpHora.Enabled = True
-            btnActualizar.Enabled = True
             dtpFecha.Format = DateTimePickerFormat.Long
             dtpHora.CustomFormat = "HH:mm"
             dtpHora.Format = DateTimePickerFormat.Custom
@@ -293,8 +352,8 @@
         dtpHora.Text = Convert.ToString(dataSorteo.SelectedCells.Item(1).Value)
         cboTipoSorteo.SelectedIndex = cboTipoSorteo.FindStringExact(dataSorteo.SelectedCells.Item(2).Value)
 
-        Dim Respuesta As Integer = MessageBox.Show("Atencion: ha seleccionado eliminar Agencia. " &
-                                                   Environment.NewLine & "¿confirma la emiliminacion?", "eliminacion de tipos de sorteo",
+        Dim Respuesta As Integer = MessageBox.Show("ATENCIÓN: ha seleccionado eliminar sorteo. " &
+                                                   Environment.NewLine & "¿Confirma la emiliminacion?", "Eliminacion de sorteo",
                                                    MessageBoxButtons.YesNo, MessageBoxIcon.Error)
 
         If Respuesta = MsgBoxResult.Yes Then
@@ -313,8 +372,8 @@
                                     "Eliminar registros", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
             Catch ex As Exception
-                MessageBox.Show("Atencion: se ha generado un error tratando de Eliminar la Agencia." &
-                                    Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
+                MessageBox.Show("ATENCIÓN: se ha generado un error tratando de eliminar el sorteo seleccionado." &
+                                    Environment.NewLine & "Descripción del error: " & Environment.NewLine & ex.Message, "Error",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End If
@@ -324,9 +383,64 @@
         frmTipoSorteo.MdiParent = frmPrincipal
         frmTipoSorteo.StartPosition = FormStartPosition.CenterScreen
         frmTipoSorteo.Show()
+        Mostrar_TipoSorteo()
     End Sub
 
-    Private Sub btnActualizar_Click(sender As Object, e As EventArgs) Handles btnActualizar.Click
+    Private Sub btnSortear_Click(sender As Object, e As EventArgs) Handles btnSortear.Click
+        If btnSortear.Text = "Mostrar Resultado" Then
+            Dim id As New Integer
+            id = dataSorteo.SelectedCells.Item(0).Value
+            frmMostrarResultados.inicio(id)
+            frmMostrarResultados.MdiParent = frmPrincipal
+            frmMostrarResultados.StartPosition = FormStartPosition.CenterScreen
+            frmMostrarResultados.Show()
+        ElseIf btnSortear.Text = "Sortear" Then
+            Dim RespuestaSortear As MsgBoxResult = MsgBox("Está seguro de realizar el sorteo?", MessageBoxButtons.YesNo)
+            If RespuestaSortear = MsgBoxResult.Yes Then
+                'se sortea'
+                Dim numeros = Numeros_Sorteo()
+                Try
+                    Dim FuncionInsertar As New fSortear
+
+                    For i As Integer = 0 To 9
+                        Dim dts As New logSortear
+                        dts.pIDSorteo = dataSorteo.SelectedCells.Item(0).Value
+                        dts.pNumero = numeros(i)
+                        dts.pPosicion = i + 1
+
+                        If FuncionInsertar.Insertar_Sorteados(dts) = False Then
+                            MessageBox.Show("El tipo de sorteo no se ha registrado. Vuelva a intentarlo.",
+                                        "Confirmar registros", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            Exit For
+                        End If
+                    Next
+                Catch ex As Exception
+                    MessageBox.Show("Atencion: se ha generado un error tratando de Registrar los tipos de sorteo." &
+                                Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            End If
+            btnSortear.Text = "Mostrar Resultado"
+        End If
+    End Sub
+
+    Public Function Numeros_Sorteo() As Integer()
+        Randomize()
+        Dim salieron(1000) As Boolean
+        Dim NumSorteados(9) As Integer
+        Dim numero As Integer
+        For i As Integer = 0 To 9
+            numero = CInt(Int((999 * Rnd()) + 1))
+            While salieron(numero) = True
+                numero = CInt(Int((999 * Rnd()) + 1))
+            End While
+            salieron(numero) = True
+            NumSorteados(i) = numero
+        Next
+        Return NumSorteados
+    End Function
+
+    Private Sub cboTipoSorteo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTipoSorteo.Click
         Mostrar_TipoSorteo()
     End Sub
 End Class

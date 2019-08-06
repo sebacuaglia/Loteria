@@ -17,8 +17,8 @@
                 DataAgencia.DataSource = Nothing
             End If
         Catch ex As Exception
-            MessageBox.Show("Atencion: se ha generado un error tratando de mostrar las Agencias." &
-                            Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
+            MessageBox.Show("ATENCIÓN: se ha generado un error tratando de mostrar las agencias." &
+                            Environment.NewLine & "Descripción del error: " & Environment.NewLine & ex.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
@@ -68,8 +68,8 @@
                 DataAgencia.DataSource = Nothing
             End If
         Catch ex As Exception
-            MessageBox.Show("Atencion: se ha generado un error tratando de buscar las Agencias." &
-                            Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
+            MessageBox.Show("ATENCIÓN: se ha generado un error tratando de buscar la agencia deseada." &
+                            Environment.NewLine & "Descripción del error: " & Environment.NewLine & ex.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
@@ -82,7 +82,6 @@
         If btnAgregar.Text = "Agregar" Then
             ModoPantallaAgencias = ModoPantalla.ModoALTA
             LimpiarTextos(Me)
-            ' Dim funcion As New fAgencia
             HabilitarTextos(Me)
 
             btnEliminar.Enabled = False
@@ -100,27 +99,27 @@
         Else
             'validamos controles
             If txtNombre.Text = "" Then
-                MsgBox("No ha ingresado un nombre para la agencia", MsgBoxStyle.Exclamation)
-                'MsgBox("Ingrese un nombre de agencia")
-                'ErrProvAgencias.SetError(txtNombre, "Debe ingresar un nombre para el Tipo de Sorteo")
+                ErrProvAgencia.SetError(txtNombre, "Debe ingresar un nombre de agencia")
                 txtNombre.Focus()
                 Exit Sub
+            Else
+                ErrProvAgencia.SetError(txtNombre, String.Empty)
             End If
             If txtGanancia.Text = "" Then
-                MsgBox("No ha ingresado un porcentaje de ganancias", MsgBoxStyle.Exclamation)
-                'ErrProvAgencias.SetError(txtGanancia, "Debe ingresar el porcentaje de ganancias")
+                ErrProvAgencia.SetError(txtGanancia, "Debe ingresar el porcentaje de ganancias")
                 txtGanancia.Focus()
                 Exit Sub
+            Else
+                ErrProvAgencia.SetError(txtGanancia, String.Empty)
             End If
 
 
             If ModoPantallaAgencias = ModoPantalla.ModoALTA Then
                 Try
-
+                    Dim funcion As New fAgencia
                     Dim dts As New logAgencia
                     Dim FuncionInsertar As New fAgencia
 
-                    'dts.pID = txtID.Text
                     dts.pNombre = txtNombre.Text
                     dts.pGanancia = txtGanancia.Text
 
@@ -139,8 +138,8 @@
                     End If
 
                 Catch ex As Exception
-                    MessageBox.Show("Atencion: se ha generado un error tratando de Registrar la agencia." &
-                            Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
+                    MessageBox.Show("ATENCIÓN: se ha generado un error tratando de registrar la agencia." &
+                            Environment.NewLine & "Descripción del error: " & Environment.NewLine & ex.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
             ElseIf ModoPantallaAgencias = ModoPantalla.ModoMODIFICACION Then
@@ -162,13 +161,13 @@
                         btnCerrar.Enabled = True
                         DataAgencia.Enabled = True
                     Else
-                        MessageBox.Show("La agencia no se ha Modificado. Vuelva a intentarlo.",
+                        MessageBox.Show("La agencia no se ha modificado. Vuelva a intentarlo.",
                                             "Confirmar registros", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
 
                 Catch ex As Exception
-                    MessageBox.Show("Atencion: se ha generado un error tratando de Modificar la agencia." &
-                                    Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
+                    MessageBox.Show("ATENCIÓN: se ha generado un error tratando de registrar las modificaciones de la agencia seleccionada." &
+                                    Environment.NewLine & "Descripción del error: " & Environment.NewLine & ex.Message, "Error",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
             End If
@@ -180,7 +179,7 @@
     Private Sub txtGanancia_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtGanancia.KeyPress
         e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) And Not e.KeyChar = ","
         If Not IsNumeric(e.KeyChar) And Not e.KeyChar = "," And Not Char.IsControl(e.KeyChar) Then
-            MsgBox("Solo puede digitar numeros")
+            ErrProvAgencia.SetError(txtGanancia, "Debe ingresar un porcentaje de ganancia válido")
         End If
     End Sub
 
@@ -228,8 +227,8 @@
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
-        Dim Respuesta As Integer = MessageBox.Show("Atencion: ha seleccionado eliminar Agencia. " &
-                                                   Environment.NewLine & "¿confirma la eliminacion?", "eliminacion de Agencias",
+        Dim Respuesta As Integer = MessageBox.Show("ATENCIÓN: ha seleccionado eliminar agencia. " &
+                                                   Environment.NewLine & "¿Confirma la eliminacion?", "Eliminacion de Agencias",
                                                    MessageBoxButtons.YesNo, MessageBoxIcon.Error)
 
         If Respuesta = MsgBoxResult.Yes Then
@@ -250,7 +249,7 @@
                                     "Eliminar registros", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
             Catch ex As Exception
-                MessageBox.Show("Atencion: se ha generado un error tratando de Eliminar la Agencia." &
+                MessageBox.Show("ATENCIÓN: se ha generado un error tratando de eliminar la agencia seleccionada." &
                                     Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
@@ -260,5 +259,4 @@
     Private Sub cboBuscar_TextChanged(sender As Object, e As EventArgs) Handles cboBuscar.TextChanged
         txtBuscar.Text = ""
     End Sub
-
 End Class

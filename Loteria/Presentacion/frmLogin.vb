@@ -8,7 +8,7 @@ Public Class frmLogin
     ' Posteriormente, My.User devolverá la información de identidad encapsulada en el objeto CustomPrincipal
     ' como el nombre de usuario, nombre para mostrar, etc.
 
-    Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
+    Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Try
             Dim dts As New LogUsuario
             Dim funcionValidar As New fUsuario
@@ -20,7 +20,7 @@ Public Class frmLogin
                 frmPrincipal.Show()
                 Me.Hide()
             Else
-                MessageBox.Show("Atencion: El usuario y/o la contraseña ingresados no son correctos.",
+                MessageBox.Show("ATENCIÓN: El usuario y/o la contraseña ingresados no son correctos.",
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 UsernameTextBox.Clear()
                 PasswordTextBox.Clear()
@@ -28,7 +28,7 @@ Public Class frmLogin
 
             End If
         Catch ex As Exception
-            MessageBox.Show("Atencion: se ha generado un error en el inicio de sesion." &
+            MessageBox.Show("ATENCIÓN: se ha generado un error en el inicio de sesion." &
                     Environment.NewLine & "Descripcion del error: " & Environment.NewLine +
                     ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -38,12 +38,11 @@ Public Class frmLogin
         Me.Close()
     End Sub
 
-    Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+    Private Sub UsernameLabel_Click(sender As Object, e As EventArgs) Handles UsernameLabel.Click
 
     End Sub
 
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+    Private Sub PasswordLabel_Click(sender As Object, e As EventArgs) Handles PasswordLabel.Click
 
     End Sub
 End Class

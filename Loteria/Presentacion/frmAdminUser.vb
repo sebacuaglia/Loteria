@@ -1,6 +1,6 @@
 ﻿Public Class frmAdminUser
     Private dt As New DataTable
-    Dim ModoPantallaAgencias As ModoPantalla
+    Dim ModoPantallaAdminUser As ModoPantalla
 
     Private Sub frmAdminUser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Mostrar_Datos()
@@ -10,6 +10,7 @@
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
         Me.Close()
     End Sub
+
     Private Sub Mostrar_Datos()
         Try
             Dim FuncionMostrar As New fAdminUser
@@ -21,8 +22,8 @@
                 dataUsuario.DataSource = Nothing
             End If
         Catch ex As Exception
-            MessageBox.Show("Atencion: se ha generado un error tratando de mostrar las Agencias." &
-                            Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
+            MessageBox.Show("ATENCIÓN: se ha generado un error tratando de mostrar los usuarios." &
+                            Environment.NewLine & "Descripción del error: " & Environment.NewLine & ex.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
@@ -70,8 +71,8 @@
                 dataUsuario.DataSource = Nothing
             End If
         Catch ex As Exception
-            MessageBox.Show("Atencion: se ha generado un error tratando de buscar las Agencias." &
-                            Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
+            MessageBox.Show("ATENCIÓN: se ha generado un error tratando de buscar el usuario deseado." &
+                            Environment.NewLine & "Descripción del error: " & Environment.NewLine & ex.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
@@ -82,7 +83,7 @@
 
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         If btnAgregar.Text = "Agregar" Then
-            ModoPantallaAgencias = ModoPantalla.ModoALTA
+            ModoPantallaAdminUser = ModoPantalla.ModoALTA
             LimpiarTextos(Me)
             HabilitarTextos(Me)
             chbHabilitado.Enabled = True
@@ -103,29 +104,75 @@
         Else
             'validamos controles
             If txtNombreUsu.Text = "" Then
-                MsgBox("No ha ingresado un nombre de Usuario valido", MsgBoxStyle.Exclamation)
-                'MsgBox("Ingrese un nombre de agencia")
-                'ErrProvAgencias.SetError(txtNombre, "Debe ingresar un nombre para el Tipo de Sorteo")
+                ErrProvAdminUser.SetError(txtNombreUsu, "Debe ingresar el nombre completo de usuario")
                 txtNombreUsu.Focus()
                 Exit Sub
+            Else
+                ErrProvAdminUser.SetError(txtNombreUsu, String.Empty)
             End If
+
             If txtLogin.Text = "" Then
-                MsgBox("No ha ingresado un nombre de Login valido", MsgBoxStyle.Exclamation)
-                'ErrProvAgencias.SetError(txtGanancia, "Debe ingresar el porcentaje de ganancias")
+                ErrProvAdminUser.SetError(txtLogin, "Debe ingresar un login valido")
                 txtLogin.Focus()
                 Exit Sub
+            Else
+                If ModoPantallaAdminUser = ModoPantalla.ModoALTA Then
+                    Try
+                        Dim dts As New logAdminUser
+                        Dim Funcion As New fAdminUser
+
+                        dts.pID = -1
+                        dts.pLogin = txtLogin.Text
+
+                        dt = Funcion.ValidarLogin(dts)
+
+                        If dt.Rows.Count <> 0 Then 'si existen datos de login iguales devuelve el siguiente msj
+                            ErrProvAdminUser.SetError(txtLogin, "Login existente, por favor ingrese otro")
+                            Exit Sub
+                        Else 'sino no muestro error alguno, y en caso de haber existido el error y luego corregirlo, quito el error y este queda como valido 
+                            ErrProvAdminUser.SetError(txtLogin, String.Empty)
+                        End If
+                    Catch ex As Exception
+                        MessageBox.Show("ATENCIÓN: se ha generado un error tratando de comprobar la validez del login ingresado." &
+                            Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+                ElseIf ModoPantallaAdminUser = ModoPantalla.ModoMODIFICACION Then
+                    Try
+                        Dim dts As New logAdminUser
+                        Dim Funcion As New fAdminUser
+
+                        dts.pID = txtID.Text
+                        dts.pLogin = txtLogin.Text
+
+                        dt = Funcion.ValidarLogin(dts)
+
+                        If dt.Rows.Count <> 0 Then 'si existen datos de login iguales devuelve el siguiente msj
+                            ErrProvAdminUser.SetError(txtLogin, "Login existente, por favor ingrese otro")
+                            Exit Sub
+                        Else 'sino no muestro error alguno, y en caso de haber existido el error y luego corregirlo, quito el error y este queda como valido 
+                            ErrProvAdminUser.SetError(txtLogin, String.Empty)
+                        End If
+                    Catch ex As Exception
+                        MessageBox.Show("ATENCIÓN: se ha generado un error tratando de comprobar la validez del login ingresado." &
+                            Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+                End If
             End If
-            If txtPass.Text = "" Then
-                MsgBox("No ha ingresado una Contraseña valida", MsgBoxStyle.Exclamation)
-                'ErrProvAgencias.SetError(txtGanancia, "Debe ingresar el porcentaje de ganancias")
+
+                If txtPass.Text = "" Then
+                ErrProvAdminUser.SetError(txtPass, "Debe ingresar una password valida")
                 txtPass.Focus()
                 Exit Sub
+            Else
+                ErrProvAdminUser.SetError(txtPass, String.Empty)
             End If
 
-            If ModoPantallaAgencias = ModoPantalla.ModoALTA Then
+            If ModoPantallaAdminUser = ModoPantalla.ModoALTA Then
                 Try
 
-                    Dim dts As New LogAdminUser
+                    Dim dts As New logAdminUser
                     Dim FuncionInsertar As New fAdminUser
 
                     dts.pNombreUsu = txtNombreUsu.Text
@@ -133,7 +180,7 @@
                     dts.pPassword = txtPass.Text
                     dts.pHabilitado = chbHabilitado.Checked
 
-                    If FuncionInsertar.Insertar_Usuario(dts) Then
+                    If FuncionInsertar.insertar_Usuario(dts) Then
                         Mostrar_Datos()
                         LimpiarTextos(Me)
                         inicia_pantalla()
@@ -143,18 +190,18 @@
                         btnCerrar.Enabled = True
                         dataUsuario.Enabled = True
                     Else
-                        MessageBox.Show("La agencia no se ha registrado. Vuelva a intentarlo.",
+                        MessageBox.Show("ATENCIÓN: El usuario no se ha registrado. Vuelva a intentarlo.",
                                     "Confirmar registros", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
 
                 Catch ex As Exception
-                    MessageBox.Show("Atencion: se ha generado un error tratando de Registrar la agencia." &
+                    MessageBox.Show("ATENCIÓN: se ha generado un error tratando de registrar el usuario." &
                             Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
-            ElseIf ModoPantallaAgencias = ModoPantalla.ModoMODIFICACION Then
+            ElseIf ModoPantallaAdminUser = ModoPantalla.ModoMODIFICACION Then
                 Try
-                    Dim dts As New LogAdminUser
+                    Dim dts As New logAdminUser
                     Dim FuncionInsertar As New fAdminUser
 
                     dts.pID = txtID.Text
@@ -173,12 +220,12 @@
                         btnCerrar.Enabled = True
                         dataUsuario.Enabled = True
                     Else
-                        MessageBox.Show("La agencia no se ha Modificado. Vuelva a intentarlo.",
+                        MessageBox.Show("El usuario no se ha Modificado. Vuelva a intentarlo.",
                                             "Confirmar registros", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
 
                 Catch ex As Exception
-                    MessageBox.Show("Atencion: se ha generado un error tratando de Modificar la agencia." &
+                    MessageBox.Show("ATENCIÓN: se ha generado un error tratando de registrar las modificaciones del usuario." &
                                     Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
@@ -186,7 +233,7 @@
         End If
     End Sub
 
-    Private Sub dataAgencia_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dataUsuario.CellClick
+    Private Sub dataUsuario_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dataUsuario.CellClick
         txtID.Text = dataUsuario.SelectedCells.Item(0).Value
         txtNombreUsu.Text = dataUsuario.SelectedCells.Item(1).Value
         txtLogin.Text = dataUsuario.SelectedCells.Item(2).Value
@@ -196,8 +243,10 @@
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
 
         If btnModificar.Text = "Cancelar" Then
-            ModoPantallaAgencias = ModoPantalla.ModoCONSULTA
-
+            ModoPantallaAdminUser = ModoPantalla.ModoCONSULTA
+            ErrProvAdminUser.SetError(txtNombreUsu, String.Empty)
+            ErrProvAdminUser.SetError(txtLogin, String.Empty)
+            ErrProvAdminUser.SetError(txtPass, String.Empty)
             inicia_pantalla()
 
             btnAgregar.Text = "Agregar"
@@ -206,7 +255,7 @@
             btnCerrar.Enabled = True
             dataUsuario.Enabled = True
         Else
-            ModoPantallaAgencias = ModoPantalla.ModoMODIFICACION
+            ModoPantallaAdminUser = ModoPantalla.ModoMODIFICACION
 
             txtID.Text = dataUsuario.SelectedCells.Item(0).Value
             txtNombreUsu.Text = dataUsuario.SelectedCells.Item(1).Value
@@ -232,13 +281,13 @@
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
-        Dim Respuesta As Integer = MessageBox.Show("Atencion: ha seleccionado eliminar Agencia. " &
-                                                   Environment.NewLine & "¿confirma la eliminacion?", "eliminacion de Agencias",
+        Dim Respuesta As Integer = MessageBox.Show("ATENCIÓN: ha seleccionado eliminar usuario. " &
+                                                   Environment.NewLine & "¿Confirma la eliminacion?", "Eliminacion de usuario",
                                                    MessageBoxButtons.YesNo, MessageBoxIcon.Error)
 
         If Respuesta = MsgBoxResult.Yes Then
             Try
-                Dim dts As New LogAdminUser
+                Dim dts As New logAdminUser
                 Dim FuncionInsertar As New fAdminUser
 
                 txtID.Text = dataUsuario.SelectedCells.Item(0).Value
@@ -254,11 +303,10 @@
                                     "Eliminar registros", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
             Catch ex As Exception
-                MessageBox.Show("Atencion: se ha generado un error tratando de Eliminar la Agencia." &
+                MessageBox.Show("ATENCIÓN: se ha generado un error tratando de eliminar el usuario seleccionado." &
                                     Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End If
     End Sub
-
 End Class

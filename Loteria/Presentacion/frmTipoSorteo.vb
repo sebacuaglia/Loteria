@@ -189,6 +189,7 @@
             ModoPantalla = ModoPantalla.ModoMODIFICACION
             txtID.Text = dataTipoSorteo.SelectedCells.Item(0).Value
 
+            txtID.Enabled = False
             HabilitarTextos(Me)
             btnEliminar.Enabled = False
             btnBuscar.Enabled = False

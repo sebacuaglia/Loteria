@@ -24,8 +24,8 @@ Public Class fUsuario
                 Return False
             End If
         Catch ex As Exception
-            MessageBox.Show("Atencion: se ha generado un error tartando de Validar los datos del usuario." +
-                    Environment.NewLine + "Descripcion del error" + Environment.NewLine +
+            MessageBox.Show("ATENCIÓN: se ha generado un error tratando de validar los datos del usuario." +
+                    Environment.NewLine + "Descripción del error" + Environment.NewLine +
                     ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         Finally

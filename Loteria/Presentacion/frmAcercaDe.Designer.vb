@@ -22,6 +22,7 @@ Partial Class frmAcercaDe
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAcercaDe))
         Me.GroupBoxProfesor = New System.Windows.Forms.GroupBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBoxAlumnos = New System.Windows.Forms.GroupBox()
@@ -68,19 +69,22 @@ Partial Class frmAcercaDe
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(58, 14)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(154, 39)
+        Me.Label2.Size = New System.Drawing.Size(137, 39)
         Me.Label2.TabIndex = 0
-        Me.Label2.Text = "Basualdo Agostina" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "12415 - Cuaglia Sebastian Ariel" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Drapata Agostina"
+        Me.Label2.Text = "12444 - Basualdo, Agostina" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "12415 - Cuaglia, Sebastian " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "12884 - Drapata, Agostin" &
+    "a"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'btnCerrar
         '
+        Me.btnCerrar.BackColor = System.Drawing.Color.LightGray
+        Me.btnCerrar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.btnCerrar.Location = New System.Drawing.Point(107, 204)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(75, 23)
         Me.btnCerrar.TabIndex = 0
         Me.btnCerrar.Text = "Cerrar"
-        Me.btnCerrar.UseVisualStyleBackColor = True
+        Me.btnCerrar.UseVisualStyleBackColor = False
         '
         'GroupBoxCatedra
         '
@@ -106,14 +110,15 @@ Partial Class frmAcercaDe
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(203, Byte), Integer))
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(290, 238)
         Me.Controls.Add(Me.GroupBoxCatedra)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.GroupBoxAlumnos)
         Me.Controls.Add(Me.GroupBoxProfesor)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(306, 277)
-        Me.MinimumSize = New System.Drawing.Size(306, 277)
         Me.Name = "frmAcercaDe"
         Me.Text = "Acerca de..."
         Me.GroupBoxProfesor.ResumeLayout(False)

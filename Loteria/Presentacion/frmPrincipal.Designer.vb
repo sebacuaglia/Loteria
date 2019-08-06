@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmPrincipal
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -21,17 +21,11 @@ Partial Class frmPrincipal
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPrincipal))
         Me.MenuStrip = New System.Windows.Forms.MenuStrip()
-        Me.FileMenu = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ProvinciasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LocalidadesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.ABMAgenciasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewMenu = New System.Windows.Forms.ToolStripMenuItem()
@@ -47,12 +41,10 @@ Partial Class frmPrincipal
         Me.ToolsMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdministradorDeUsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.WindowsMenu = New System.Windows.Forms.ToolStripMenuItem()
-        Me.NewWindowToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CascadeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TileVerticalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TileHorizontalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CloseAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ArrangeIconsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CerrarSesiónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -61,59 +53,26 @@ Partial Class frmPrincipal
         Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.StatusStrip = New System.Windows.Forms.StatusStrip()
-        Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnGanadores = New System.Windows.Forms.Button()
+        Me.btnApuestas = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.cboSorteo = New System.Windows.Forms.ComboBox()
         Me.MenuStrip.SuspendLayout()
-        Me.StatusStrip.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip
         '
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileMenu, Me.EditMenu, Me.ViewMenu, Me.ToolsMenu, Me.WindowsMenu, Me.CerrarSesiónToolStripMenuItem, Me.HelpMenu, Me.SalirToolStripMenuItem})
+        Me.MenuStrip.BackColor = System.Drawing.Color.LightGray
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditMenu, Me.ViewMenu, Me.ToolsMenu, Me.WindowsMenu, Me.CerrarSesiónToolStripMenuItem, Me.HelpMenu, Me.SalirToolStripMenuItem})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.MdiWindowListItem = Me.WindowsMenu
         Me.MenuStrip.Name = "MenuStrip"
         Me.MenuStrip.Size = New System.Drawing.Size(632, 24)
         Me.MenuStrip.TabIndex = 5
         Me.MenuStrip.Text = "MenuStrip"
-        '
-        'FileMenu
-        '
-        Me.FileMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ProvinciasToolStripMenuItem, Me.LocalidadesToolStripMenuItem, Me.ToolStripSeparator5, Me.ExitToolStripMenuItem})
-        Me.FileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder
-        Me.FileMenu.Name = "FileMenu"
-        Me.FileMenu.Size = New System.Drawing.Size(60, 20)
-        Me.FileMenu.Text = "&Archivo"
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(136, 22)
-        Me.ToolStripMenuItem1.Text = "Paises"
-        '
-        'ProvinciasToolStripMenuItem
-        '
-        Me.ProvinciasToolStripMenuItem.Name = "ProvinciasToolStripMenuItem"
-        Me.ProvinciasToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
-        Me.ProvinciasToolStripMenuItem.Text = "Provincias"
-        '
-        'LocalidadesToolStripMenuItem
-        '
-        Me.LocalidadesToolStripMenuItem.Name = "LocalidadesToolStripMenuItem"
-        Me.LocalidadesToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
-        Me.LocalidadesToolStripMenuItem.Text = "Localidades"
-        '
-        'ToolStripSeparator5
-        '
-        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(133, 6)
-        '
-        'ExitToolStripMenuItem
-        '
-        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
-        Me.ExitToolStripMenuItem.Text = "&Salir"
         '
         'EditMenu
         '
@@ -204,16 +163,10 @@ Partial Class frmPrincipal
         '
         'WindowsMenu
         '
-        Me.WindowsMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewWindowToolStripMenuItem, Me.CascadeToolStripMenuItem, Me.TileVerticalToolStripMenuItem, Me.TileHorizontalToolStripMenuItem, Me.CloseAllToolStripMenuItem, Me.ArrangeIconsToolStripMenuItem})
+        Me.WindowsMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CascadeToolStripMenuItem, Me.TileVerticalToolStripMenuItem, Me.TileHorizontalToolStripMenuItem, Me.CloseAllToolStripMenuItem})
         Me.WindowsMenu.Name = "WindowsMenu"
         Me.WindowsMenu.Size = New System.Drawing.Size(66, 20)
         Me.WindowsMenu.Text = "&Ventanas"
-        '
-        'NewWindowToolStripMenuItem
-        '
-        Me.NewWindowToolStripMenuItem.Name = "NewWindowToolStripMenuItem"
-        Me.NewWindowToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
-        Me.NewWindowToolStripMenuItem.Text = "&Nueva ventana"
         '
         'CascadeToolStripMenuItem
         '
@@ -238,12 +191,6 @@ Partial Class frmPrincipal
         Me.CloseAllToolStripMenuItem.Name = "CloseAllToolStripMenuItem"
         Me.CloseAllToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
         Me.CloseAllToolStripMenuItem.Text = "C&errar todo"
-        '
-        'ArrangeIconsToolStripMenuItem
-        '
-        Me.ArrangeIconsToolStripMenuItem.Name = "ArrangeIconsToolStripMenuItem"
-        Me.ArrangeIconsToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
-        Me.ArrangeIconsToolStripMenuItem.Text = "&Organizar iconos"
         '
         'CerrarSesiónToolStripMenuItem
         '
@@ -298,28 +245,63 @@ Partial Class frmPrincipal
         Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(41, 20)
         Me.SalirToolStripMenuItem.Text = "Salir"
         '
-        'StatusStrip
+        'GroupBox1
         '
-        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel})
-        Me.StatusStrip.Location = New System.Drawing.Point(0, 431)
-        Me.StatusStrip.Name = "StatusStrip"
-        Me.StatusStrip.Size = New System.Drawing.Size(632, 22)
-        Me.StatusStrip.TabIndex = 7
-        Me.StatusStrip.Text = "StatusStrip"
+        Me.GroupBox1.Controls.Add(Me.btnGanadores)
+        Me.GroupBox1.Controls.Add(Me.btnApuestas)
+        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.cboSorteo)
+        Me.GroupBox1.Location = New System.Drawing.Point(185, 141)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(270, 78)
+        Me.GroupBox1.TabIndex = 7
+        Me.GroupBox1.TabStop = False
         '
-        'ToolStripStatusLabel
+        'btnGanadores
         '
-        Me.ToolStripStatusLabel.Name = "ToolStripStatusLabel"
-        Me.ToolStripStatusLabel.Size = New System.Drawing.Size(42, 17)
-        Me.ToolStripStatusLabel.Text = "Estado"
+        Me.btnGanadores.Location = New System.Drawing.Point(44, 49)
+        Me.btnGanadores.Name = "btnGanadores"
+        Me.btnGanadores.Size = New System.Drawing.Size(88, 23)
+        Me.btnGanadores.TabIndex = 3
+        Me.btnGanadores.Text = "Ver Ganadores"
+        Me.btnGanadores.UseVisualStyleBackColor = True
+        '
+        'btnApuestas
+        '
+        Me.btnApuestas.Location = New System.Drawing.Point(138, 49)
+        Me.btnApuestas.Name = "btnApuestas"
+        Me.btnApuestas.Size = New System.Drawing.Size(95, 23)
+        Me.btnApuestas.TabIndex = 2
+        Me.btnApuestas.Text = "Ver Apuestas"
+        Me.btnApuestas.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(75, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(114, 13)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Selecciones un Sorteo"
+        '
+        'cboSorteo
+        '
+        Me.cboSorteo.FormattingEnabled = True
+        Me.cboSorteo.Location = New System.Drawing.Point(6, 19)
+        Me.cboSorteo.Name = "cboSorteo"
+        Me.cboSorteo.Size = New System.Drawing.Size(258, 21)
+        Me.cboSorteo.TabIndex = 0
         '
         'frmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackgroundImage = Global.Loteria.My.Resources.Resources.fondoo
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(632, 453)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.MenuStrip)
-        Me.Controls.Add(Me.StatusStrip)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip
         Me.Name = "frmPrincipal"
@@ -327,8 +309,8 @@ Partial Class frmPrincipal
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.MenuStrip.ResumeLayout(False)
         Me.MenuStrip.PerformLayout()
-        Me.StatusStrip.ResumeLayout(False)
-        Me.StatusStrip.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -339,26 +321,16 @@ Partial Class frmPrincipal
     Friend WithEvents SearchToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator8 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ArrangeIconsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CloseAllToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents NewWindowToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents WindowsMenu As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CascadeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TileVerticalToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TileHorizontalToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolTip As System.Windows.Forms.ToolTip
-    Friend WithEvents ToolStripStatusLabel As System.Windows.Forms.ToolStripStatusLabel
-    Friend WithEvents StatusStrip As System.Windows.Forms.StatusStrip
-    Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator5 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents FileMenu As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MenuStrip As System.Windows.Forms.MenuStrip
     Friend WithEvents EditMenu As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ViewMenu As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolsMenu As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents ProvinciasToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents LocalidadesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ABMAgenciasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ABMCTiposDeSorteoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ABMCSorteosToolStripMenuItem As ToolStripMenuItem
@@ -372,4 +344,9 @@ Partial Class frmPrincipal
     Friend WithEvents AdministradorDeUsuariosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SalirToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CerrarSesiónToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents cboSorteo As ComboBox
+    Friend WithEvents btnApuestas As Button
+    Friend WithEvents btnGanadores As Button
 End Class

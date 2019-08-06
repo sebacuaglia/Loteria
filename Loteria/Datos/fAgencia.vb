@@ -25,8 +25,8 @@ Public Class fAgencia
                 Return Nothing
             End If
         Catch ex As Exception
-            MessageBox.Show("No se han podido mostrar las agencias." &
-                            Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
+            MessageBox.Show("ATENCIÓN: se ha generado un error tratando de mostrar las agencias." &
+                            Environment.NewLine & "Descripción del error: " & Environment.NewLine & ex.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return Nothing
         Finally
@@ -41,7 +41,6 @@ Public Class fAgencia
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = CNN
 
-            'cmd.Parameters.AddWithValue("@ID", dts.pID)
             cmd.Parameters.AddWithValue("@Nombre", dts.pNombre)
             cmd.Parameters.AddWithValue("@Porc_ganancia", dts.pGanancia)
 
@@ -51,8 +50,8 @@ Public Class fAgencia
                 Return False
             End If
         Catch ex As Exception
-            MessageBox.Show("Error al intentar registrar una agencia" &
-                            Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
+            MessageBox.Show("ATENCIÓN: se ha generado un error tratando de registrar una agencia." &
+                            Environment.NewLine & "Descripción del error: " & Environment.NewLine & ex.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         Finally
@@ -77,8 +76,8 @@ Public Class fAgencia
                 Return False
             End If
         Catch ex As Exception
-            MessageBox.Show("Atencion: se ha generado un error tratando de modificar la Agencia seleccionada." &
-                            Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
+            MessageBox.Show("ATENCIÓN: se ha generado un error tratando de registrar las modificaciones de la agencia seleccionada." &
+                            Environment.NewLine & "Descripción del error: " & Environment.NewLine & ex.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         Finally
@@ -101,8 +100,8 @@ Public Class fAgencia
                 Return False
             End If
         Catch ex As Exception
-            MessageBox.Show("No se ha podido eliminar la agencia seleccionada" &
-                            Environment.NewLine & "Descripcion del error: " & Environment.NewLine & ex.Message, "Error",
+            MessageBox.Show("ATENCIÓN: se ha generado un error tratando de eliminar la agencia seleccionada." &
+                            Environment.NewLine & "Descripción del error: " & Environment.NewLine & ex.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         Finally

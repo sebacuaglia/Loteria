@@ -16,10 +16,15 @@ Partial Class Form1
 
     'Requerido por el Diseñador de Windows Forms
     Private components As System.ComponentModel.IContainer
-    Friend WithEvents ReportViewer1 As Microsoft.Reporting.WinForms.ReportViewer
 
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-
+    <System.Diagnostics.DebuggerStepThrough()> _
+    Private Sub InitializeComponent()
+        components = New System.ComponentModel.Container
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Text = "Form1"
+    End Sub
 End Class

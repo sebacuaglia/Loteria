@@ -23,6 +23,7 @@ Partial Class frmTipoSorteo
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTipoSorteo))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -53,7 +54,7 @@ Partial Class frmTipoSorteo
         '
         'GroupBox1
         '
-        Me.GroupBox1.BackColor = System.Drawing.SystemColors.Control
+        Me.GroupBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(203, Byte), Integer))
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Location = New System.Drawing.Point(0, 0)
         Me.GroupBox1.Name = "GroupBox1"
@@ -144,7 +145,7 @@ Partial Class frmTipoSorteo
         Me.GroupBox3.Controls.Add(Me.txtBuscar)
         Me.GroupBox3.Location = New System.Drawing.Point(0, 275)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(644, 158)
+        Me.GroupBox3.Size = New System.Drawing.Size(644, 162)
         Me.GroupBox3.TabIndex = 0
         Me.GroupBox3.TabStop = False
         '
@@ -152,13 +153,16 @@ Partial Class frmTipoSorteo
         '
         Me.dataTipoSorteo.AllowUserToAddRows = False
         Me.dataTipoSorteo.AllowUserToDeleteRows = False
+        Me.dataTipoSorteo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
+        Me.dataTipoSorteo.BackgroundColor = System.Drawing.Color.LightGray
+        Me.dataTipoSorteo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dataTipoSorteo.Location = New System.Drawing.Point(12, 43)
         Me.dataTipoSorteo.MultiSelect = False
         Me.dataTipoSorteo.Name = "dataTipoSorteo"
         Me.dataTipoSorteo.ReadOnly = True
         Me.dataTipoSorteo.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
         Me.dataTipoSorteo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dataTipoSorteo.Size = New System.Drawing.Size(632, 102)
+        Me.dataTipoSorteo.Size = New System.Drawing.Size(632, 109)
         Me.dataTipoSorteo.TabIndex = 12
         '
         'cboBuscar
@@ -173,12 +177,13 @@ Partial Class frmTipoSorteo
         '
         'btnBuscar
         '
+        Me.btnBuscar.BackColor = System.Drawing.Color.LightGray
         Me.btnBuscar.Location = New System.Drawing.Point(529, 12)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(109, 26)
         Me.btnBuscar.TabIndex = 10
         Me.btnBuscar.Text = "Buscar"
-        Me.btnBuscar.UseVisualStyleBackColor = True
+        Me.btnBuscar.UseVisualStyleBackColor = False
         '
         'txtBuscar
         '
@@ -200,39 +205,43 @@ Partial Class frmTipoSorteo
         '
         'btnEliminar
         '
-        Me.btnEliminar.Location = New System.Drawing.Point(12, 129)
+        Me.btnEliminar.BackColor = System.Drawing.Color.LightGray
+        Me.btnEliminar.Location = New System.Drawing.Point(12, 141)
         Me.btnEliminar.Name = "btnEliminar"
-        Me.btnEliminar.Size = New System.Drawing.Size(109, 42)
+        Me.btnEliminar.Size = New System.Drawing.Size(109, 26)
         Me.btnEliminar.TabIndex = 8
         Me.btnEliminar.Text = "Eliminar"
-        Me.btnEliminar.UseVisualStyleBackColor = True
+        Me.btnEliminar.UseVisualStyleBackColor = False
         '
         'btnAgregar
         '
+        Me.btnAgregar.BackColor = System.Drawing.Color.LightGray
         Me.btnAgregar.Location = New System.Drawing.Point(12, 33)
         Me.btnAgregar.Name = "btnAgregar"
-        Me.btnAgregar.Size = New System.Drawing.Size(109, 42)
+        Me.btnAgregar.Size = New System.Drawing.Size(109, 26)
         Me.btnAgregar.TabIndex = 6
         Me.btnAgregar.Text = "Agregar"
-        Me.btnAgregar.UseVisualStyleBackColor = True
+        Me.btnAgregar.UseVisualStyleBackColor = False
         '
         'btnModificar
         '
-        Me.btnModificar.Location = New System.Drawing.Point(12, 81)
+        Me.btnModificar.BackColor = System.Drawing.Color.LightGray
+        Me.btnModificar.Location = New System.Drawing.Point(12, 88)
         Me.btnModificar.Name = "btnModificar"
-        Me.btnModificar.Size = New System.Drawing.Size(109, 42)
+        Me.btnModificar.Size = New System.Drawing.Size(109, 26)
         Me.btnModificar.TabIndex = 7
         Me.btnModificar.Text = "Modificar"
-        Me.btnModificar.UseVisualStyleBackColor = True
+        Me.btnModificar.UseVisualStyleBackColor = False
         '
         'btnCerrar
         '
-        Me.btnCerrar.Location = New System.Drawing.Point(551, 437)
+        Me.btnCerrar.BackColor = System.Drawing.Color.LightGray
+        Me.btnCerrar.Location = New System.Drawing.Point(529, 443)
         Me.btnCerrar.Name = "btnCerrar"
-        Me.btnCerrar.Size = New System.Drawing.Size(75, 23)
+        Me.btnCerrar.Size = New System.Drawing.Size(109, 26)
         Me.btnCerrar.TabIndex = 13
         Me.btnCerrar.Text = "Cerrar"
-        Me.btnCerrar.UseVisualStyleBackColor = True
+        Me.btnCerrar.UseVisualStyleBackColor = False
         '
         'ErrProvTipoSorteo
         '
@@ -242,13 +251,17 @@ Partial Class frmTipoSorteo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(203, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(656, 472)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(672, 511)
+        Me.MinimumSize = New System.Drawing.Size(672, 511)
         Me.Name = "frmTipoSorteo"
         Me.Text = ".:. Tipos de Sorteo .:."
         Me.GroupBox1.ResumeLayout(False)

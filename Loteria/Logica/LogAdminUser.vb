@@ -1,4 +1,4 @@
-﻿Public Class LogAdminUser
+﻿Public Class logAdminUser
     Dim ID As Integer
     Dim NombreUsu, Login, Password As String
     Dim Habilitado As Boolean

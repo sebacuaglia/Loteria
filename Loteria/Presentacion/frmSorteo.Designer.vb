@@ -23,6 +23,7 @@ Partial Class frmSorteo
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSorteo))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnAgregarTipoSorteo = New System.Windows.Forms.Button()
         Me.dtpHora = New System.Windows.Forms.DateTimePicker()
@@ -48,7 +49,6 @@ Partial Class frmSorteo
         Me.ErrProvSorteo = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.btnActualizar = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -59,7 +59,6 @@ Partial Class frmSorteo
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.btnActualizar)
         Me.GroupBox1.Controls.Add(Me.btnAgregarTipoSorteo)
         Me.GroupBox1.Controls.Add(Me.dtpHora)
         Me.GroupBox1.Controls.Add(Me.cboTipoSorteo)
@@ -70,24 +69,25 @@ Partial Class frmSorteo
         Me.GroupBox1.Controls.Add(Me.lvlID)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 78)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(467, 111)
+        Me.GroupBox1.Size = New System.Drawing.Size(447, 111)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
         'btnAgregarTipoSorteo
         '
-        Me.btnAgregarTipoSorteo.Location = New System.Drawing.Point(322, 71)
+        Me.btnAgregarTipoSorteo.BackColor = System.Drawing.Color.LightGray
+        Me.btnAgregarTipoSorteo.Location = New System.Drawing.Point(273, 71)
         Me.btnAgregarTipoSorteo.Name = "btnAgregarTipoSorteo"
-        Me.btnAgregarTipoSorteo.Size = New System.Drawing.Size(130, 23)
+        Me.btnAgregarTipoSorteo.Size = New System.Drawing.Size(147, 23)
         Me.btnAgregarTipoSorteo.TabIndex = 13
         Me.btnAgregarTipoSorteo.Text = "Agregar Tipo de Sorteo"
-        Me.btnAgregarTipoSorteo.UseVisualStyleBackColor = True
+        Me.btnAgregarTipoSorteo.UseVisualStyleBackColor = False
         '
         'dtpHora
         '
         Me.dtpHora.CustomFormat = "HH:mm"
         Me.dtpHora.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpHora.Location = New System.Drawing.Point(322, 45)
+        Me.dtpHora.Location = New System.Drawing.Point(352, 45)
         Me.dtpHora.Name = "dtpHora"
         Me.dtpHora.ShowUpDown = True
         Me.dtpHora.Size = New System.Drawing.Size(68, 20)
@@ -97,14 +97,14 @@ Partial Class frmSorteo
         'cboTipoSorteo
         '
         Me.cboTipoSorteo.FormattingEnabled = True
-        Me.cboTipoSorteo.Location = New System.Drawing.Point(116, 73)
+        Me.cboTipoSorteo.Location = New System.Drawing.Point(146, 71)
         Me.cboTipoSorteo.Name = "cboTipoSorteo"
         Me.cboTipoSorteo.Size = New System.Drawing.Size(121, 21)
         Me.cboTipoSorteo.TabIndex = 5
         '
         'dtpFecha
         '
-        Me.dtpFecha.Location = New System.Drawing.Point(116, 45)
+        Me.dtpFecha.Location = New System.Drawing.Point(146, 45)
         Me.dtpFecha.Name = "dtpFecha"
         Me.dtpFecha.Size = New System.Drawing.Size(200, 20)
         Me.dtpFecha.TabIndex = 2
@@ -112,7 +112,7 @@ Partial Class frmSorteo
         '
         'txtID
         '
-        Me.txtID.Location = New System.Drawing.Point(116, 19)
+        Me.txtID.Location = New System.Drawing.Point(146, 19)
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(100, 20)
         Me.txtID.TabIndex = 4
@@ -120,7 +120,7 @@ Partial Class frmSorteo
         'lvlTiSorteo
         '
         Me.lvlTiSorteo.AutoSize = True
-        Me.lvlTiSorteo.Location = New System.Drawing.Point(33, 76)
+        Me.lvlTiSorteo.Location = New System.Drawing.Point(63, 74)
         Me.lvlTiSorteo.Name = "lvlTiSorteo"
         Me.lvlTiSorteo.Size = New System.Drawing.Size(77, 13)
         Me.lvlTiSorteo.TabIndex = 3
@@ -129,7 +129,7 @@ Partial Class frmSorteo
         'lvlFechaSorteo
         '
         Me.lvlFechaSorteo.AutoSize = True
-        Me.lvlFechaSorteo.Location = New System.Drawing.Point(24, 48)
+        Me.lvlFechaSorteo.Location = New System.Drawing.Point(54, 51)
         Me.lvlFechaSorteo.Name = "lvlFechaSorteo"
         Me.lvlFechaSorteo.Size = New System.Drawing.Size(86, 13)
         Me.lvlFechaSorteo.TabIndex = 2
@@ -138,7 +138,7 @@ Partial Class frmSorteo
         'lvlID
         '
         Me.lvlID.AutoSize = True
-        Me.lvlID.Location = New System.Drawing.Point(92, 22)
+        Me.lvlID.Location = New System.Drawing.Point(122, 22)
         Me.lvlID.Name = "lvlID"
         Me.lvlID.Size = New System.Drawing.Size(18, 13)
         Me.lvlID.TabIndex = 0
@@ -157,30 +157,33 @@ Partial Class frmSorteo
         '
         'btnEliminar
         '
-        Me.btnEliminar.Location = New System.Drawing.Point(42, 76)
+        Me.btnEliminar.BackColor = System.Drawing.Color.LightGray
+        Me.btnEliminar.Location = New System.Drawing.Point(27, 77)
         Me.btnEliminar.Name = "btnEliminar"
-        Me.btnEliminar.Size = New System.Drawing.Size(75, 23)
+        Me.btnEliminar.Size = New System.Drawing.Size(109, 26)
         Me.btnEliminar.TabIndex = 2
         Me.btnEliminar.Text = "Eliminar"
-        Me.btnEliminar.UseVisualStyleBackColor = True
+        Me.btnEliminar.UseVisualStyleBackColor = False
         '
         'btnModificar
         '
-        Me.btnModificar.Location = New System.Drawing.Point(42, 48)
+        Me.btnModificar.BackColor = System.Drawing.Color.LightGray
+        Me.btnModificar.Location = New System.Drawing.Point(27, 45)
         Me.btnModificar.Name = "btnModificar"
-        Me.btnModificar.Size = New System.Drawing.Size(75, 23)
+        Me.btnModificar.Size = New System.Drawing.Size(109, 26)
         Me.btnModificar.TabIndex = 1
         Me.btnModificar.Text = "Modificar"
-        Me.btnModificar.UseVisualStyleBackColor = True
+        Me.btnModificar.UseVisualStyleBackColor = False
         '
         'btnAgregar
         '
-        Me.btnAgregar.Location = New System.Drawing.Point(42, 19)
+        Me.btnAgregar.BackColor = System.Drawing.Color.LightGray
+        Me.btnAgregar.Location = New System.Drawing.Point(27, 13)
         Me.btnAgregar.Name = "btnAgregar"
-        Me.btnAgregar.Size = New System.Drawing.Size(75, 23)
+        Me.btnAgregar.Size = New System.Drawing.Size(109, 26)
         Me.btnAgregar.TabIndex = 0
         Me.btnAgregar.Text = "Agregar"
-        Me.btnAgregar.UseVisualStyleBackColor = True
+        Me.btnAgregar.UseVisualStyleBackColor = False
         '
         'GroupBox3
         '
@@ -198,6 +201,9 @@ Partial Class frmSorteo
         '
         Me.dataSorteo.AllowUserToAddRows = False
         Me.dataSorteo.AllowUserToDeleteRows = False
+        Me.dataSorteo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
+        Me.dataSorteo.BackgroundColor = System.Drawing.Color.LightGray
+        Me.dataSorteo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dataSorteo.Location = New System.Drawing.Point(6, 46)
         Me.dataSorteo.MultiSelect = False
         Me.dataSorteo.Name = "dataSorteo"
@@ -209,16 +215,17 @@ Partial Class frmSorteo
         '
         'btnBuscar
         '
-        Me.btnBuscar.Location = New System.Drawing.Point(515, 17)
+        Me.btnBuscar.BackColor = System.Drawing.Color.LightGray
+        Me.btnBuscar.Location = New System.Drawing.Point(500, 12)
         Me.btnBuscar.Name = "btnBuscar"
-        Me.btnBuscar.Size = New System.Drawing.Size(75, 23)
+        Me.btnBuscar.Size = New System.Drawing.Size(109, 26)
         Me.btnBuscar.TabIndex = 6
         Me.btnBuscar.Text = "Buscar"
-        Me.btnBuscar.UseVisualStyleBackColor = True
+        Me.btnBuscar.UseVisualStyleBackColor = False
         '
         'txtBuscar
         '
-        Me.txtBuscar.Location = New System.Drawing.Point(146, 20)
+        Me.txtBuscar.Location = New System.Drawing.Point(112, 18)
         Me.txtBuscar.Name = "txtBuscar"
         Me.txtBuscar.Size = New System.Drawing.Size(363, 20)
         Me.txtBuscar.TabIndex = 5
@@ -226,8 +233,8 @@ Partial Class frmSorteo
         'cboBuscar
         '
         Me.cboBuscar.FormattingEnabled = True
-        Me.cboBuscar.Items.AddRange(New Object() {"ID", "Nombre"})
-        Me.cboBuscar.Location = New System.Drawing.Point(40, 19)
+        Me.cboBuscar.Items.AddRange(New Object() {"ID", "Nombre", "Fecha"})
+        Me.cboBuscar.Location = New System.Drawing.Point(6, 17)
         Me.cboBuscar.Name = "cboBuscar"
         Me.cboBuscar.Size = New System.Drawing.Size(100, 21)
         Me.cboBuscar.TabIndex = 4
@@ -244,24 +251,26 @@ Partial Class frmSorteo
         '
         'btnCerrar
         '
-        Me.btnCerrar.Location = New System.Drawing.Point(563, 437)
+        Me.btnCerrar.BackColor = System.Drawing.Color.LightGray
+        Me.btnCerrar.Location = New System.Drawing.Point(512, 435)
         Me.btnCerrar.Name = "btnCerrar"
-        Me.btnCerrar.Size = New System.Drawing.Size(75, 23)
+        Me.btnCerrar.Size = New System.Drawing.Size(109, 26)
         Me.btnCerrar.TabIndex = 0
         Me.btnCerrar.Text = "Cerrar"
-        Me.btnCerrar.UseVisualStyleBackColor = True
+        Me.btnCerrar.UseVisualStyleBackColor = False
         '
         'Timer
         '
         '
         'btnSortear
         '
-        Me.btnSortear.Location = New System.Drawing.Point(482, 437)
+        Me.btnSortear.BackColor = System.Drawing.Color.LightGray
+        Me.btnSortear.Location = New System.Drawing.Point(378, 434)
         Me.btnSortear.Name = "btnSortear"
-        Me.btnSortear.Size = New System.Drawing.Size(75, 23)
+        Me.btnSortear.Size = New System.Drawing.Size(109, 26)
         Me.btnSortear.TabIndex = 14
         Me.btnSortear.Text = "Sortear"
-        Me.btnSortear.UseVisualStyleBackColor = True
+        Me.btnSortear.UseVisualStyleBackColor = False
         '
         'ErrProvSorteo
         '
@@ -269,7 +278,7 @@ Partial Class frmSorteo
         '
         'GroupBox4
         '
-        Me.GroupBox4.BackColor = System.Drawing.SystemColors.Control
+        Me.GroupBox4.BackColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(203, Byte), Integer))
         Me.GroupBox4.Controls.Add(Me.Label4)
         Me.GroupBox4.Location = New System.Drawing.Point(12, 4)
         Me.GroupBox4.Name = "GroupBox4"
@@ -289,19 +298,11 @@ Partial Class frmSorteo
     "odificar, Eliminar y Consultar los sorteos  Sistema"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'btnActualizar
-        '
-        Me.btnActualizar.Location = New System.Drawing.Point(243, 71)
-        Me.btnActualizar.Name = "btnActualizar"
-        Me.btnActualizar.Size = New System.Drawing.Size(75, 23)
-        Me.btnActualizar.TabIndex = 14
-        Me.btnActualizar.Text = "Actualizar"
-        Me.btnActualizar.UseVisualStyleBackColor = True
-        '
         'frmSorteo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(203, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(656, 472)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.btnSortear)
@@ -310,7 +311,10 @@ Partial Class frmSorteo
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.lvlFecha)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(672, 511)
+        Me.MinimumSize = New System.Drawing.Size(672, 511)
         Me.Name = "frmSorteo"
         Me.Text = ".:. Sorteo .:."
         Me.GroupBox1.ResumeLayout(False)
@@ -352,5 +356,4 @@ Partial Class frmSorteo
     Friend WithEvents ErrProvSorteo As ErrorProvider
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents btnActualizar As Button
 End Class

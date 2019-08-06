@@ -17,7 +17,7 @@ Public Class clsConexion
             CNN.Open() 'abrimos la conexion'
             Return True
         Catch ex As Exception
-            MessageBox.Show("Atencion se ha generado un error tratando de establecer la conexion con la base de datos" &
+            MessageBox.Show("ATENCIÓN: se ha generado un error tratando de establecer la conexión con la base de datos" &
                             Environment.NewLine & "Descripcion del error: " &
                             Environment.NewLine & ex.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -37,9 +37,9 @@ Public Class clsConexion
                 Return False
             End If
         Catch ex As Exception
-            MessageBox.Show("Atencion: se ha generado un error tratando de cerrar la " +
-                            "conexion con la base de datos." &
-                            Environment.NewLine & "Descripcion del error: " &
+            MessageBox.Show("ATENCIÓN: se ha generado un error tratando de cerrar la " +
+                            "conexión con la base de datos." &
+                            Environment.NewLine & "Descripción del error: " &
                             Environment.NewLine & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End Try

@@ -2,7 +2,7 @@
 
 Public Class frmPrincipal
 
-    Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs) Handles  NewWindowToolStripMenuItem.Click
+    Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs)
         ' Cree una nueva instancia del formulario secundario.
         Dim ChildForm As New System.Windows.Forms.Form
         ' Conviértalo en un elemento secundario de este formulario MDI antes de mostrarlo.
@@ -14,7 +14,7 @@ Public Class frmPrincipal
         ChildForm.Show()
     End Sub
 
-    Private Sub OpenFile(ByVal sender As Object, ByVal e As EventArgs) 
+    Private Sub OpenFile(ByVal sender As Object, ByVal e As EventArgs)
         Dim OpenFileDialog As New OpenFileDialog
         OpenFileDialog.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.MyDocuments
         OpenFileDialog.Filter = "Archivos de texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*"
@@ -36,7 +36,7 @@ Public Class frmPrincipal
     End Sub
 
 
-    Private Sub ExitToolsStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles ExitToolStripMenuItem.Click
+    Private Sub ExitToolsStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs)
         Me.Close()
     End Sub
 
@@ -72,7 +72,7 @@ Public Class frmPrincipal
         Me.LayoutMdi(MdiLayout.TileHorizontal)
     End Sub
 
-    Private Sub ArrangeIconsToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles ArrangeIconsToolStripMenuItem.Click
+    Private Sub ArrangeIconsToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs)
         Me.LayoutMdi(MdiLayout.ArrangeIcons)
     End Sub
 
@@ -122,5 +122,75 @@ Public Class frmPrincipal
         frmSorteo.MdiParent = Me
         frmSorteo.StartPosition = FormStartPosition.CenterScreen
         frmSorteo.Show()
+    End Sub
+
+    Private Sub TiposDeSorteosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TiposDeSorteosToolStripMenuItem.Click
+        rptTipoSorteo.MdiParent = Me
+        rptTipoSorteo.StartPosition = FormStartPosition.CenterScreen
+        rptTipoSorteo.Show()
+    End Sub
+
+    Private Sub ABMCApuestasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ABMCApuestasToolStripMenuItem.Click
+        frmApuestas.MdiParent = Me
+        frmApuestas.StartPosition = FormStartPosition.CenterScreen
+        frmApuestas.Show()
+    End Sub
+
+
+    Private Sub ReporteConElTop10DeNrosPremiadosPorSorteoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReporteConElTop10DeNrosPremiadosPorSorteoToolStripMenuItem.Click
+        Top10.MdiParent = Me
+        Top10.StartPosition = FormStartPosition.CenterScreen
+        Top10.Show()
+    End Sub
+
+    Private Sub ApuestasPorSorteosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ApuestasPorSorteosToolStripMenuItem.Click
+        GroupBox1.Show()
+    End Sub
+
+    Private Sub SorteosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SorteosToolStripMenuItem.Click
+        rptSorteos.MdiParent = Me
+        rptSorteos.StartPosition = FormStartPosition.CenterScreen
+        rptSorteos.Show()
+    End Sub
+
+    Private Sub CargarCboSorteo()
+        Dim dt As New DataTable
+        Try
+            Dim FuncionMostrar As New fSorteo
+            dt = FuncionMostrar.Mostrar_Sorteo
+
+            If dt.Rows.Count <> 0 Then
+                cboSorteo.DataSource = dt
+                cboSorteo.DisplayMember = "Fecha"
+                cboSorteo.ValueMember = "ID"
+            Else
+                cboSorteo.DataSource = Nothing
+            End If
+        Catch ex As Exception
+            MessageBox.Show("ATENCIÓN: se ha generado un error tratando de mostrar los sorteos." &
+                            Environment.NewLine & "Descripción del error: " & Environment.NewLine & ex.Message, "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub frmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        GroupBox1.Hide()
+        CargarCboSorteo()
+    End Sub
+
+    Private Sub btnApuestas_Click(sender As Object, e As EventArgs) Handles btnApuestas.Click
+        rptApuestasPorSorteo.MdiParent = Me
+        rptApuestasPorSorteo.StartPosition = FormStartPosition.CenterScreen
+        rptApuestasPorSorteo.Mostrar(cboSorteo.SelectedValue)
+        GroupBox1.Hide()
+        rptApuestasPorSorteo.Show()
+    End Sub
+
+    Private Sub btnGanadores_Click(sender As Object, e As EventArgs) Handles btnGanadores.Click
+        rptGanadoresPorSorteo.MdiParent = Me
+        rptGanadoresPorSorteo.StartPosition = FormStartPosition.CenterScreen
+        rptGanadoresPorSorteo.Mostrar(cboSorteo.SelectedValue)
+        GroupBox1.Hide()
+        rptGanadoresPorSorteo.Show()
     End Sub
 End Class

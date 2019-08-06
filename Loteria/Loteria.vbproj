@@ -6,15 +6,16 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F40F470F-5B98-4608-9ED0-3F484E0B1CDE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Loteria.My.MyApplication</StartupObject>
+    <StartupObject>Loteria.frmLogin</StartupObject>
     <RootNamespace>Loteria</RootNamespace>
     <AssemblyName>Loteria</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>WindowsForms</MyType>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <PublishUrl>publish\</PublishUrl>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\sebac\Desktop\Universidad\Taller de Programacion I\Tp instalador\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -24,10 +25,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -62,15 +63,42 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icono bola 25.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>D706A8D5F148744FB74576C6E68A097A54B99018</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Loteria_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.AnalysisServices.AppLocal, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.AnalysisServices.AppLocal.Core, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.AnalysisServices.AppLocal.Tabular, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1357.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1357.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
@@ -107,34 +135,27 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="DataSetLoteria.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetLoteria.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Datos\clsConexion.vb" />
     <Compile Include="Datos\fAdminUser.vb" />
     <Compile Include="Datos\fAgencia.vb" />
+    <Compile Include="Datos\fApuestas.vb" />
+    <Compile Include="Datos\fSortear.vb" />
     <Compile Include="Datos\fSorteo.vb" />
     <Compile Include="Datos\fTipoSorteo.vb" />
     <Compile Include="Datos\fUsuario.vb" />
-    <Compile Include="Form1.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Logica\LogAdminUser.vb" />
+    <Compile Include="Logica\logAdminUser.vb" />
     <Compile Include="Logica\logAgencia.vb" />
+    <Compile Include="Logica\logApuestas.vb" />
+    <Compile Include="Logica\logSortear.vb" />
     <Compile Include="Logica\logSorteo.vb" />
     <Compile Include="Logica\logTipoSorteo.vb" />
     <Compile Include="Logica\LogUsuario.vb" />
-    <Compile Include="LoteriaDataSet.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LoteriaDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="LoteriaDataSet1.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LoteriaDataSet1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -168,16 +189,22 @@
     <Compile Include="Presentacion\frmAgencia.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Presentacion\frmApuestas.Designer.vb">
+      <DependentUpon>frmApuestas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmApuestas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmMostrarResultados.Designer.vb">
+      <DependentUpon>frmMostrarResultados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmMostrarResultados.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Presentacion\frmSorteo.Designer.vb">
       <DependentUpon>frmSorteo.vb</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\frmSorteo.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentacion\frmTipoSorteo.Designer.vb">
-      <DependentUpon>frmTipoSorteo.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Presentacion\frmTipoSorteo.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentacion\frmLogin.Designer.vb">
@@ -192,17 +219,50 @@
     <Compile Include="Presentacion\frmPrincipal.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Presentacion\frmTipoSorteo.Designer.vb">
+      <DependentUpon>frmTipoSorteo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmTipoSorteo.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Presentacion\modFuncionesForm.vb" />
+    <Compile Include="Presentacion\rptApuestasPorSorteo.Designer.vb">
+      <DependentUpon>rptApuestasPorSorteo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\rptApuestasPorSorteo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\rptGanadoresPorSorteo.Designer.vb">
+      <DependentUpon>rptGanadoresPorSorteo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\rptGanadoresPorSorteo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\rptSorteos.Designer.vb">
+      <DependentUpon>rptSorteos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\rptSorteos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\rptTipoSorteo.Designer.vb">
+      <DependentUpon>rptTipoSorteo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\rptTipoSorteo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\rptTop10.Designer.vb">
+      <DependentUpon>rptTop10.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\rptTop10.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmAcercaDe.resx">
       <DependentUpon>frmAcercaDe.vb</DependentUpon>
@@ -213,11 +273,14 @@
     <EmbeddedResource Include="Presentacion\frmAgencia.resx">
       <DependentUpon>frmAgencia.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmApuestas.resx">
+      <DependentUpon>frmApuestas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmMostrarResultados.resx">
+      <DependentUpon>frmMostrarResultados.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmSorteo.resx">
       <DependentUpon>frmSorteo.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\frmTipoSorteo.resx">
-      <DependentUpon>frmTipoSorteo.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
@@ -225,30 +288,44 @@
     <EmbeddedResource Include="Presentacion\frmPrincipal.resx">
       <DependentUpon>frmPrincipal.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmTipoSorteo.resx">
+      <DependentUpon>frmTipoSorteo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\rptApuestasPorSorteo.resx">
+      <DependentUpon>rptApuestasPorSorteo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\rptGanadoresPorSorteo.resx">
+      <DependentUpon>rptGanadoresPorSorteo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\rptSorteos.resx">
+      <DependentUpon>rptSorteos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\rptTipoSorteo.resx">
+      <DependentUpon>rptTipoSorteo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\rptTop10.resx">
+      <DependentUpon>rptTop10.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ApuestasPorSorteo.rdlc" />
+    <EmbeddedResource Include="Reportes\GanadoresPorSorteo.rdlc" />
+    <EmbeddedResource Include="Reportes\Sorteos.rdlc" />
+    <EmbeddedResource Include="Reportes\TiposSorteos.rdlc" />
+    <EmbeddedResource Include="Reportes\Top10.rdlc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="LoteriaDataSet.xsc">
-      <DependentUpon>LoteriaDataSet.xsd</DependentUpon>
+    <None Include="DataSetLoteria.xsc">
+      <DependentUpon>DataSetLoteria.xsd</DependentUpon>
     </None>
-    <None Include="LoteriaDataSet.xsd">
+    <None Include="DataSetLoteria.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>LoteriaDataSet.Designer.vb</LastGenOutput>
+      <LastGenOutput>DataSetLoteria.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="LoteriaDataSet.xss">
-      <DependentUpon>LoteriaDataSet.xsd</DependentUpon>
+    <None Include="DataSetLoteria.xss">
+      <DependentUpon>DataSetLoteria.xsd</DependentUpon>
     </None>
-    <None Include="LoteriaDataSet1.xsc">
-      <DependentUpon>LoteriaDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="LoteriaDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>LoteriaDataSet1.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="LoteriaDataSet1.xss">
-      <DependentUpon>LoteriaDataSet1.xsd</DependentUpon>
-    </None>
+    <None Include="Loteria_TemporaryKey.pfx" />
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -259,9 +336,27 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\bola.png" />
+    <None Include="Resources\circulo verd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondoo.png" />
+    <Content Include="icono bola 25.ico" />
     <Content Include="SqlServerTypes\Loader.cs" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
@@ -277,20 +372,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 y x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Reportes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
